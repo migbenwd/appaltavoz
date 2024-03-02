@@ -25,7 +25,9 @@ export default {
     web: {
         favicon: "./assets/favicon.png"
     },
-    extra: {
+	
+    /*
+	extra: {
         eas: {
             projectId: "ea85bda6-b26d-486a-90f0-5b8abbc6cf22"
         }
@@ -36,4 +38,5 @@ export default {
     updates: {
         url: "https://u.expo.dev/ea85bda6-b26d-486a-90f0-5b8abbc6cf22"
     }
+	*/
 };
