@@ -1,0 +1,111 @@
+# Dependencias
+/node_modules/
+/.pnp
+.pnp.js
+
+# Historial de publicaciones de Expo
+/.expo/
+
+# Archivos de configuración del entorno
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Directorios de compilación
+/ios/
+/android/
+/web-build/
+
+# Directorio de salida de Metro
+/metro-cache/
+
+# Archivos temporales
+*.swp
+*.swo
+*.tmp
+*.bak
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+*.log
+
+# Archivos de sistema específicos de MacOS
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivo de icono de Mac
+Icon
+
+# Archivos de vista previa de documentos de texto de Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+.auto-save-list
+
+# Archivos de TeX
+*.aux
+*.out
+*.toc
+*.log
+*.fls
+*.fdb_latexmk
+
+# Archivos de Node
+/node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Directorios de IDE y editores
+/.idea/
+.vscode/
+*.sw?
+
+# Archivos de paquetes
+*.tgz
+*.log
+my-app*.tgz
+
+# Directorios generados por Expo
+/web-build/
+/.expo/
+/.expo-shared/
+
+# Archivos de configuración de herramientas de desarrollo
+.eslintcache
+.tscache
+*.tsbuildinfo
+/.jest/
+
+# Archivos de configuración de seguridad
+*.pem
+
+# Archivos de configuración de herramientas de CI
+/.travis.yml
+/appveyor.yml
+/.circleci/
+/.github/
+/vercel.json
+
+# Archivos y directorios de cache
+.cache/
+.tmp/
+
+# Otros archivos y directorios a ignorar
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
