@@ -1,21 +1,21 @@
-import axios from "axios";
-import { parse } from "node-html-parser";
+import axios from 'axios';
+import { parse } from 'node-html-parser';
 
-const apiBaseUrlAV = "https://noticieroaltavoz.com/wp-json/wp/v2/posts/";
+const apiBaseUrlAV = 'https://noticieroaltavoz.com/wp-json/wp/v2/posts/';
 
-export const getNewsByCategoryId = async (categoryId) => { // return Promise<data>
-  const url = `${apiBaseUrlAV}?categories=${categoryId}`
+export const getNewsByCategoryId = async (categoryId) => {
+  // return Promise<data>
+  const url = `${apiBaseUrlAV}?categories=${categoryId}`;
   const response = await axios.get(url);
-  return response.data
-}
+  return response.data;
+};
 
 export const fetchDiscoverNewsAV = async (id) => {
-  return getNewsByCategoryId(id)
+  return getNewsByCategoryId(id);
 };
 
 export const getCategories = async () => {
-
-  const response = await fetch("https://noticieroaltavoz.com/");
+  const response = await fetch('https://noticieroaltavoz.com/');
   const html = await response.text();
   const parsed = parse(html, {
     blockTextElements: {
@@ -26,23 +26,30 @@ export const getCategories = async () => {
     },
   });
 
-  const itemsLiMenu = parsed.querySelector(".elementor-element-6d3dfb1")?.querySelectorAll("li");
-  const textItems = Array.from(itemsLiMenu).map(
-    (item) => item.textContent.trim()
+  const itemsLiMenu = parsed
+    .querySelector('.elementor-element-6d3dfb1')
+    ?.querySelectorAll('li');
+  const textItems = Array.from(itemsLiMenu).map((item) =>
+    item.textContent.trim()
   );
 
-  //console.log(textItems);
+  // console.log(textItems);
 
-  const itemsLiMenu2 = parsed.querySelector(".elementor-element-70940b2")?.querySelectorAll("li");
-  const textItems2 = Array.from(itemsLiMenu2).map(
-    (item) => item.textContent.trim()
+  const itemsLiMenu2 = parsed
+    .querySelector('.elementor-element-70940b2')
+    ?.querySelectorAll('li');
+  const textItems2 = Array.from(itemsLiMenu2).map((item) =>
+    item.textContent.trim()
   );
 
-  //console.log(textItems2);
+  // console.log(textItems2);
 
   const textItemsFinal = textItems.concat(textItems2);
 
-  var arrayMenuWeb = textItemsFinal.map(element => ({ id: 1, title: element }));
+  const arrayMenuWeb = textItemsFinal.map((element) => ({
+    id: 1,
+    title: element,
+  }));
   /*
   console.log('............');
   console.log('arrayMenuWeb');
@@ -50,12 +57,18 @@ export const getCategories = async () => {
   console.log(arrayMenuWeb);
   */
 
-  const result = await fetch('https://noticieroaltavoz.com/wp-json/wp/v2/categories?per_page=12')
-    .then(response => response.json())
-    .then(data => data.map((item) => ({
-      id: item.id,
-      title: item.name
-    })))
+  const result = await fetch(
+    'https://noticieroaltavoz.com/wp-json/wp/v2/categories?per_page=12'
+  )
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((data) =>
+      data.map((item) => ({
+        id: item.id,
+        title: item.name,
+      }))
+    );
 
   const arrayCategoriasApi = result;
 
@@ -66,8 +79,7 @@ export const getCategories = async () => {
   console.log(arrayCategoriasApi);
   */
 
-
-  //----------------------- Hallar Coincidentes ...
+  // ----------------------- Hallar Coincidentes ...
 
   // Nuevo array para almacenar las coincidencias
   const arrayCategory = [];
@@ -91,8 +103,7 @@ export const getCategories = async () => {
   });
 
   // Mostrar el nuevo array
-  //console.log(arrayCategory);
+  // console.log(arrayCategory);
 
-  return arrayCategory
-}
-
+  return arrayCategory;
+};

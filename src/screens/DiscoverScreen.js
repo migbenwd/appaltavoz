@@ -5,50 +5,49 @@ import {
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useColorScheme } from "nativewind";
-import { StatusBar } from "expo-status-bar";
-import { useQuery } from "@tanstack/react-query";
-import { categories } from "../constants";
-import CategoriesCard from "../components/CategoriesCard";
-import NewsSection from "../components/NewsSection/NewsSection";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import { fetchDiscoverNewsAV } from "../../utils/NewsApi";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useColorScheme } from 'nativewind';
+import { StatusBar } from 'expo-status-bar';
+import { useQuery } from '@tanstack/react-query';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { categories } from '../constants';
+import CategoriesCard from '../components/CategoriesCard';
+import NewsSection from '../components/NewsSection/NewsSection';
+import { fetchDiscoverNewsAV } from '../services/NewsApi';
 
 export default function DiscoverScreen() {
   const { colorScheme } = useColorScheme();
-  const [activeCategory, setActiveCategory] = useState("business");
+  const [activeCategory, setActiveCategory] = useState('business');
   const [discoverNewsAV, setDiscoverNewsAV] = useState([]);
 
   useEffect(() => {
-    console.log("active category", activeCategory);
+    console.log('active category', activeCategory);
   }, [activeCategory]);
 
   const handleChangeCategory = (category) => {
     setActiveCategory(category);
     setDiscoverNewsAV([]);
-    console.log("category", category);
+    console.log('category', category);
   };
 
   const { isLoading: isDiscoverLoading } = useQuery({
-    queryKey: ["discoverNews", activeCategory], // Include the category as part of the key
+    queryKey: ['discoverNews', activeCategory], // Include the category as part of the key
     queryFn: () => fetchDiscoverNewsAV(activeCategory), // You can skip the query if the category is "business"
     onSuccess: (data) => {
       const filteredNewsAV = data;
       setDiscoverNewsAV(filteredNewsAV);
-
     },
     onError: (error) => {
-      console.log("Error fetching discover news", error);
+      console.log('Error fetching discover news', error);
     },
   });
 
   return (
     <SafeAreaView className="pt-8 bg-white dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
 
       <View>
         {/* Header */}
@@ -56,7 +55,7 @@ export default function DiscoverScreen() {
           <Text
             className="text-3xl text-green-800 dark:text-white"
             style={{
-              fontFamily: "SpaceGroteskBold",
+              fontFamily: 'SpaceGroteskBold',
             }}
           >
             Descubre La Noticia
@@ -65,7 +64,7 @@ export default function DiscoverScreen() {
           <Text
             className="text-base text-gray-600 dark:text-neutral-300 "
             style={{
-              fontFamily: "SpaceGroteskMedium",
+              fontFamily: 'SpaceGroteskMedium',
             }}
           >
             Noticias De Todo Mexico
@@ -79,7 +78,7 @@ export default function DiscoverScreen() {
           </TouchableOpacity>
           <TextInput
             placeholder="Search for news"
-            placeholderTextColor={"gray"}
+            placeholderTextColor="gray"
             className="pl-4 flex-1 font-medium text-black tracking-wider"
           />
         </View>
@@ -98,7 +97,7 @@ export default function DiscoverScreen() {
             <Text
               className="text-xl dark:text-white"
               style={{
-                fontFamily: "SpaceGroteskBold",
+                fontFamily: 'SpaceGroteskBold',
               }}
             >
               Descubre Altavoz
@@ -107,7 +106,7 @@ export default function DiscoverScreen() {
             <Text
               className="text-base text-green-800 dark:text-neutral-300"
               style={{
-                fontFamily: "SpaceGroteskBold",
+                fontFamily: 'SpaceGroteskBold',
               }}
             >
               View all

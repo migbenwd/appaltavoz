@@ -1,18 +1,17 @@
-import { View, Text } from "react-native";
-import React, { useEffect } from "react";
+import { View, Text } from 'react-native';
+import React, { useEffect, useCallback } from 'react';
 
-import { useFonts } from "expo-font";
-import { useCallback } from "react";
-import * as SplashScreen from "expo-splash-screen";
-import { useNavigation } from "@react-navigation/native";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SplashScreens() {
   const navigation = useNavigation();
 
   const [fontsLoaded, fontError] = useFonts({
-    SpaceGroteskSemiBold: require("../fonts/SpaceGrotesk-SemiBold.ttf"),
-    SpaceGroteskBold: require("../fonts/SpaceGrotesk-Bold.ttf"),
-    SpaceGroteskMedium: require("../fonts/SpaceGrotesk-Medium.ttf"),
+    SpaceGroteskSemiBold: require('../fonts/SpaceGrotesk-SemiBold.ttf'),
+    SpaceGroteskBold: require('../fonts/SpaceGrotesk-Bold.ttf'),
+    SpaceGroteskMedium: require('../fonts/SpaceGrotesk-Medium.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -21,13 +20,13 @@ export default function SplashScreens() {
     }
 
     setTimeout(() => {
-      navigation.navigate("Welcome"); // Navigate to HomeTab
+      navigation.navigate('Welcome'); // Navigate to HomeTab
     }, 3000); // 3 seconds delay
-  });
+  }, [fontError, fontsLoaded, navigation]);
 
   useEffect(() => {
     onLayoutRootView();
-  }, [fontsLoaded, fontError]);
+  }, [onLayoutRootView]);
 
   if (!fontsLoaded) {
     return null;

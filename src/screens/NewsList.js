@@ -1,23 +1,17 @@
-
 import {
   View,
   Text,
   ScrollView,
   Image,
   ActivityIndicator,
-  StyleSheet
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useColorScheme } from "nativewind";
-import { StatusBar } from "expo-status-bar";
-import { useQuery } from "@tanstack/react-query";
-import { categories } from "../constants";
-import CategoriesCard from "../components/CategoriesCard";
-import NewsSection from "../components/NewsSection/NewsSection";
-import { fetchDiscoverNewsAV } from "../../utils/NewsApi";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-
+  StyleSheet,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useColorScheme } from 'nativewind';
+import { StatusBar } from 'expo-status-bar';
+import { useQuery } from '@tanstack/react-query';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {
   useFonts,
   Poppins_100Thin,
@@ -38,10 +32,13 @@ import {
   Poppins_800ExtraBold_Italic,
   Poppins_900Black,
   Poppins_900Black_Italic,
-} from "@expo-google-fonts/poppins";
+} from '@expo-google-fonts/poppins';
+import { categories } from '../constants';
+import CategoriesCard from '../components/CategoriesCard';
+import NewsSection from '../components/NewsSection/NewsSection';
+import { fetchDiscoverNewsAV } from '../services/NewsApi';
 
 export default function HomeScreen() {
-
   const [fontsLoaded] = useFonts({
     Poppins_100Thin,
     Poppins_100Thin_Italic,
@@ -64,46 +61,46 @@ export default function HomeScreen() {
   });
 
   const { colorScheme } = useColorScheme();
-  const [activeCategory, setActiveCategory] = useState("50");
-  const [selectedCategoryTitle, setSelectedCategoryTitle] = useState("Nacional");
+  const [activeCategory, setActiveCategory] = useState('50');
+  const [selectedCategoryTitle, setSelectedCategoryTitle] =
+    useState('Nacional');
   const [discoverNewsAV, setDiscoverNewsAV] = useState([]);
 
   useEffect(() => {
-    console.log("active category", activeCategory);
+    console.log('active category', activeCategory);
   }, [activeCategory]);
 
   const handleChangeCategory = (category) => {
-    console.log("en category", category);
+    console.log('en category', category);
     setActiveCategory(category.id);
     setDiscoverNewsAV([]);
     setSelectedCategoryTitle(category.title);
   };
 
   const { isLoading: isDiscoverLoading } = useQuery({
-    queryKey: ["discoverNews", activeCategory], // Include the category as part of the key
+    queryKey: ['discoverNews', activeCategory], // Include the category as part of the key
     queryFn: () => fetchDiscoverNewsAV(activeCategory), // You can skip the query if the category is "business"
     onSuccess: (data) => {
       const filteredNewsAV = data;
       setDiscoverNewsAV(filteredNewsAV);
-
     },
     onError: (error) => {
-      console.log("Error fetching discover news", error);
+      console.log('Error fetching discover news', error);
     },
   });
 
   if (!fontsLoaded) {
-    return <Text></Text>;
+    return <Text />;
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700"></View>
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+      <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       <View style={styles.container}>
         <View>
           <Image
-            source={require("../../assets/images/welcome/logo.png")}
+            source={require('../../assets/images/welcome/logo.png')}
             style={{
               resizeMode: 'contain',
               height: 100,
@@ -111,9 +108,7 @@ export default function HomeScreen() {
             }}
           />
         </View>
-
       </View>
-
 
       <View className="p-2">
         <CategoriesCard
@@ -124,7 +119,7 @@ export default function HomeScreen() {
 
         <Text
           className="text-xl dark:text-white mb-2 mt-2"
-          style={{ fontFamily: "Poppins_300Light", }}
+          style={{ fontFamily: 'Poppins_300Light' }}
         >
           {selectedCategoryTitle}
         </Text>
@@ -146,10 +141,8 @@ export default function HomeScreen() {
             />
           </ScrollView>
         )}
-
       </View>
     </SafeAreaView>
-
   );
 }
 

@@ -6,14 +6,14 @@ import {
   TouchableOpacity,
   Dimensions,
   StyleSheet,
-} from "react-native";
-import { WebView } from "react-native-webview"
-import React, { useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import { SafeAreaView } from "react-native-safe-area-context";
+} from 'react-native';
+import { WebView } from 'react-native-webview';
+import React, { useState } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const { height, width } = Dimensions.get("window");
+const { height, width } = Dimensions.get('window');
 
 export default function NewsDetails() {
   const { item, tituloCategoria } = useRoute().params;
@@ -69,75 +69,64 @@ export default function NewsDetails() {
 `;
 
   return (
-    <>
-      <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
 
-        <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700">
-        </View>
-
-        <View style={styles.container}>
-
-          <View>
-            <Image
-              source={require("../../assets/images/welcome/logo.png")}
-              style={{
-                resizeMode: 'contain',
-                height: 100,
-                width: 200,
-              }}
-            />
-          </View>
-
-        </View>
-
-        <View className="flex-row items-center px-2 pb-0">
-          <View className="p-2 rounded-full items-center justify-center mt-1">
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Icon name="arrow-left" size={25} strokeWidth={3} color="blue" />
-            </TouchableOpacity>
-          </View>
-          <Text
-            className="pl-4 text-blue-800"
+      <View style={styles.container}>
+        <View>
+          <Image
+            source={require('../../assets/images/welcome/logo.png')}
             style={{
-              fontFamily: "SpaceGroteskBold",
-              fontSize: 20,
-            }}
-          >
-            {tituloCategoria}
-          </Text>
-        </View>
-
-        <WebView
-          source={{ uri: item.link }}
-          injectedJavaScript={runFirst}
-          onMessage={() => { }}
-          style={{
-            display: !visible ? 'flex' : 'none'
-          }}
-          onLoadStart={() => setVisible(true)}
-          onLoadEnd={() => setVisible(false)}
-          onLoadProgress={() => console.log('en migben Load Progress')}
-        />
-
-
-        {visible ? (
-          <ActivityIndicator
-            size={"large"}
-            color={"blue"}
-            style={{
-              position: "absolute",
-              top: height / 2,
-              left: width / 2,
+              resizeMode: 'contain',
+              height: 100,
+              width: 200,
             }}
           />
-        ) : null}
+        </View>
+      </View>
 
-      </SafeAreaView>
-    </>
+      <View className="flex-row items-center px-2 pb-0">
+        <View className="p-2 rounded-full items-center justify-center mt-1">
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon name="arrow-left" size={25} strokeWidth={3} color="blue" />
+          </TouchableOpacity>
+        </View>
+        <Text
+          className="pl-4 text-blue-800"
+          style={{
+            fontFamily: 'SpaceGroteskBold',
+            fontSize: 20,
+          }}
+        >
+          {tituloCategoria}
+        </Text>
+      </View>
 
+      <WebView
+        source={{ uri: item.link }}
+        injectedJavaScript={runFirst}
+        onMessage={() => {}}
+        style={{
+          display: !visible ? 'flex' : 'none',
+        }}
+        onLoadStart={() => setVisible(true)}
+        onLoadEnd={() => setVisible(false)}
+        onLoadProgress={() => console.log('en migben Load Progress')}
+      />
+
+      {visible ? (
+        <ActivityIndicator
+          size="large"
+          color="blue"
+          style={{
+            position: 'absolute',
+            top: height / 2,
+            left: width / 2,
+          }}
+        />
+      ) : null}
+    </SafeAreaView>
   );
-
-
 }
 
 const styles = StyleSheet.create({
