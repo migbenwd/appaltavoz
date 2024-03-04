@@ -27,9 +27,7 @@ export function RenderNewsItem({
   indexso,
   activeCategoryId,
 }) {
-  
   const navigation = useNavigation();
-
   const [fontsLoaded] = useFonts({
     Poppins_500Medium,
     Poppins_600SemiBold,
