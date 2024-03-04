@@ -27,9 +27,7 @@ export function RenderNewsItem({
   indexso,
   activeCategoryId,
 }) {
-  console.log('indexso', indexso);
-  console.log('activeCategoryId', activeCategoryId);
-
+  
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
