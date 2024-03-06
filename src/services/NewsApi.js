@@ -50,6 +50,7 @@ export const getCategories = async () => {
     id: 1,
     title: element,
   }));
+
   /*
   console.log('............');
   console.log('arrayMenuWeb');
@@ -106,4 +107,26 @@ export const getCategories = async () => {
   // console.log(arrayCategory);
 
   return arrayCategory;
+};
+
+export const getPublicidad = async () => {
+  const response = await fetch('https://noticieroaltavoz.com/');
+  const html = await response.text();
+  const parsed = parse(html, {
+    blockTextElements: {
+      script: false,
+      noscript: true,
+      style: true,
+      pre: true,
+    },
+  });
+
+  // Encontrar el div con data-id="422a733" y extraer su HTML
+  const divPublicidad = parsed.querySelector('div[data-id="422a733"]');
+  const publicidadav = divPublicidad ? divPublicidad.innerHTML : '';
+
+  // console.log('publicidadav---1');
+  // console.log(publicidadav);
+
+  return publicidadav;
 };
