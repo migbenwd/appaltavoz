@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+
 import {
   View,
   Text,
@@ -19,14 +20,15 @@ import {
   Poppins_400Regular,
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
+import { WebView } from 'react-native-webview';
 import CategoriesCard from '../components/CategoriesCard';
 import NewsSection, {
   RenderNewsItem,
 } from '../components/NewsSection/NewsSection';
+
 import { getNewsByCategoryId, getCategories } from '../services/NewsApi';
 
 const CATEGORY_DEFAULT = { id: '77', title: 'Portada' };
-
 const getTheFirstFiveNewsByCategories = async () => {
   const categories = await getCategories();
 
@@ -89,6 +91,31 @@ export default function HomeScreen() {
     return <Text />;
   }
 
+  const runFirst = `(function(){
+
+    const BtnWhatsapp = document.getElementsByClassName("joinchat__button")[0];
+    const DivBloque1 = document.querySelector("[data-id='b474d47']");
+    const DivBloque2 = document.querySelector("[data-id='f54687a']");
+    const MenuPrincipal = document.querySelector("[data-elementor-id='36']");
+    const Radio = document.querySelector("[data-id='45895aa']");
+    const Radio2 = document.querySelector("[data-id='0322bc2']");
+    const EscuchaLaRadio1 = document.querySelector("[data-id='2a3eb6f']");
+    const LivesEnYoutube = document.querySelector("[data-id='00ea0fe']");
+
+    BtnWhatsapp.remove();
+    DivBloque1.remove();
+    DivBloque2.remove();
+    MenuPrincipal.remove();
+    Radio.remove();
+    Radio2.remove();
+
+
+
+    true; 
+
+  })()
+`;  
+
   return (
     <SafeAreaView style={{ flex: 1 }} edge={['bottom']}>
       <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
@@ -106,6 +133,7 @@ export default function HomeScreen() {
           />
         </View>
       </View>
+
       <View className="p-2">
         <CategoriesCard
           activeCategory={activeCategory.id}
@@ -136,24 +164,39 @@ export default function HomeScreen() {
             section: { id: categoryId, title: categoryTitle },
           }) => {
             return (
-              <TouchableOpacity
-                onPress={() =>
-                  handleChangeCategory({ id: categoryId, title: categoryTitle })
-                }
-                className="flex items-center space-y-1"
-              >
-                <View className="rounded-full mb-6 py-2 px-4 border-2 bg-slate-50  w-50">
-                  <Text
-                    style={{
-                      fontSize: hp(2),
-                      fontFamily: 'Poppins_400Regular',
-                    }}
-                  >
-                    {' '}
-                    Ver Máss
-                  </Text>
-                </View>
-              </TouchableOpacity>
+              <>
+                <TouchableOpacity
+                  onPress={() =>
+                    handleChangeCategory({
+                      id: categoryId,
+                      title: categoryTitle,
+                    })
+                  }
+                  className="flex items-center space-y-1"
+                >
+                  <View className="rounded-full mb-6 py-2 px-4 border-2 bg-slate-50  w-50">
+                    <Text
+                      style={{
+                        fontSize: hp(2),
+                        fontFamily: 'Poppins_400Regular',
+                      }}
+                    >
+                      Ver Más
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+    
+
+                <WebView
+                  className="flex items-center space-y-1 mb-10 ml-5 mr-5"
+                  style={{
+                    height: 750,
+                  }}
+                  source={{ uri: 'https://noticieroaltavoz.com' }}
+                  injectedJavaScript={runFirst}
+
+                />
+              </>
             );
           }}
           renderItem={({ item, index }) => (
@@ -166,7 +209,6 @@ export default function HomeScreen() {
           )}
           renderSectionHeader={({ section: { title } }) => (
             // -------------- category tittle
-
             <View className="flex-row">
               <Text
                 className="bg-[#FFCC29] uppercase rounded ml-2 py-0 px-7 mt-0 mb-4"
