@@ -97,24 +97,55 @@ export default function HomeScreen() {
     const DivBloque1 = document.querySelector("[data-id='b474d47']");
     const DivBloque2 = document.querySelector("[data-id='f54687a']");
     const MenuPrincipal = document.querySelector("[data-elementor-id='36']");
+    const Footer = document.querySelector("[data-elementor-id='87']");
     const Radio = document.querySelector("[data-id='45895aa']");
     const Radio2 = document.querySelector("[data-id='0322bc2']");
     const EscuchaLaRadio1 = document.querySelector("[data-id='2a3eb6f']");
     const LivesEnYoutube = document.querySelector("[data-id='00ea0fe']");
+    const EscuchaLaRadio = document.querySelector("[data-id='8bed472']");
+    const PublicidadHorizontal = document.querySelector("[data-id='6ab0856']");
+    const UltimosVideos = document.querySelector("[data-id='6b845a5']");
+    const LoUltimoEnAV = document.querySelector("[data-id='f05780b']");
+    const LivesYoutube = document.querySelector("[data-id='65af564']");
+    const Spotify = document.querySelector("[data-id='c7fad72']");
+    const Publicidad2 = document.querySelector("[data-id='422a733']");
 
+    const PublicidadCuadro = document.querySelector("[data-id='4b6996e']");
+    PublicidadCuadro.style.marginTop = "-75%";
+    PublicidadCuadro.style.width = "8%";
+        
     BtnWhatsapp.remove();
     DivBloque1.remove();
     DivBloque2.remove();
     MenuPrincipal.remove();
+    Footer.remove();
     Radio.remove();
     Radio2.remove();
+    EscuchaLaRadio.remove();
+    PublicidadHorizontal.remove();
+    UltimosVideos.remove();
+    LoUltimoEnAV.remove();
+    LivesYoutube.remove();
+    Spotify.remove();
+    Publicidad2.remove();
 
 
+    const botonesElementor = document.querySelectorAll(".elementor-button-wrapper");
+    botonesElementor.forEach((boton) => {
+      boton.style.display = "none";
+    });
+
+    const h1s = document.querySelectorAll("h1");
+    h1s.forEach((h1) => {
+    h1.style.display = "none";
+    });
+
+    
 
     true; 
 
   })()
-`;  
+`;
 
   return (
     <SafeAreaView style={{ flex: 1 }} edge={['bottom']}>
@@ -185,16 +216,14 @@ export default function HomeScreen() {
                     </Text>
                   </View>
                 </TouchableOpacity>
-    
 
                 <WebView
-                  className="flex items-center space-y-1 mb-10 ml-5 mr-5"
+                  className="flex items-center ml-5 mr-5 mb-10"
                   style={{
-                    height: 750,
+                    height: 250,
                   }}
                   source={{ uri: 'https://noticieroaltavoz.com' }}
                   injectedJavaScript={runFirst}
-
                 />
               </>
             );
