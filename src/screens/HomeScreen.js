@@ -58,7 +58,7 @@ export default function HomeScreen() {
   const [discoverNewsAV, setDiscoverNewsAV] = useState([]);
   const [newsPortada, setNewsPortada] = useState([]);
 
-  const fetchNewsByCategory = (categoryId) => {
+  function fetchNewsByCategory(categoryId) {
     setIsLoading(true);
     if (categoryId === CATEGORY_DEFAULT.id) {
       return getTheFirstFiveNewsByCategories().then((data) => {
@@ -75,7 +75,7 @@ export default function HomeScreen() {
       .catch((err) => {
         console.log('Error fetching news by category id', err);
       });
-  };
+  }
 
   const handleChangeCategory = (category) => {
     setDiscoverNewsAV([]);
@@ -226,6 +226,7 @@ export default function HomeScreen() {
                     style={{ height: 250 }}
                     source={{ uri: 'https://noticieroaltavoz.com' }}
                     injectedJavaScript={runFirst}
+                    onLoadProgress={console.log('web view en progreso')}
                   />
                 </View>
               </>
