@@ -81,7 +81,7 @@ export default function HomeScreen() {
     setDiscoverNewsAV([]);
     setActiveCategory(category);
     fetchNewsByCategory(category.id);
-  }; 
+  };
 
   useEffect(() => {
     fetchNewsByCategory(CATEGORY_DEFAULT.id);
