@@ -57,6 +57,7 @@ export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [discoverNewsAV, setDiscoverNewsAV] = useState([]);
   const [newsPortada, setNewsPortada] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   function fetchNewsByCategory(categoryId) {
     setIsLoading(true);
@@ -118,7 +119,7 @@ export default function HomeScreen() {
     PublicidadHorizontal.remove();
 
     const PublicidadCuadro = document.querySelector("[data-id='4b6996e']");
-    PublicidadCuadro.style.marginTop='-40%'
+    PublicidadCuadro.style.marginTop='-30%'
     
     
     
@@ -220,14 +221,41 @@ export default function HomeScreen() {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <View className="border-indigo-500/100">
+                <View className="mb-10">
                   <WebView
-                    className="flex items-center ml-5 mr-5 mb-10"
-                    style={{ height: 250 }}
-                    source={{ uri: 'https://noticieroaltavoz.com' }}
+                    onLoadStart={() => setVisible(true)}
+                    onLoadEnd={() => setVisible(false)}
+                    onLoadProgress={() => console.log('webview en progreso')}
                     injectedJavaScript={runFirst}
-                    onLoadProgress={console.log('web view en progreso')}
+                    onMessage={() => {}}
+                    style={{
+                      flex: 1,
+                      height: 270,
+                      // display: !visible ? 'flex' : 'none',
+                      display: 'flex',
+                    }}
+                    source={{ uri: 'https://noticieroaltavoz.com' }}
                   />
+                  {visible ? (
+                    <>
+                      <ActivityIndicator
+                        style={{
+                          flex: 1,
+                          left: 0,
+                          right: 0,
+                          top: 0,
+                          bottom: 0,
+                          position: 'absolute',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: 'white',
+                        }}
+                        size="large"
+                        color="blue"
+                      />
+                      <Text>Cargando Publicidad...</Text>
+                    </>
+                  ) : null}
                 </View>
               </>
             );
