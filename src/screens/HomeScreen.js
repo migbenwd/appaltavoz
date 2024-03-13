@@ -26,12 +26,16 @@ import NewsSection, {
   RenderNewsItem,
 } from '../components/NewsSection/NewsSection';
 
-import { getNewsByCategoryId, getCategories } from '../services/NewsApi';
+import {
+  getNewsByCategoryId,
+  getCategories,
+  // getPublicidad,
+} from '../services/NewsApi';
 
 const CATEGORY_DEFAULT = { id: '77', title: 'Portada' };
+
 const getTheFirstFiveNewsByCategories = async () => {
   const categories = await getCategories();
-
   const newsByCategoriesId = [CATEGORY_DEFAULT, ...categories].map(
     async (category) => {
       const news = await getNewsByCategoryId(category.id);
@@ -57,7 +61,16 @@ export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [discoverNewsAV, setDiscoverNewsAV] = useState([]);
   const [newsPortada, setNewsPortada] = useState([]);
-  // const [visible, setVisible] = useState(false);
+  // const [adPublicidad, setadPublicidad] = useState([]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const fetchedAdContent = await getPublicidad();
+  //     setadPublicidad(fetchedAdContent);
+  //   })();
+  // }, []);
+
+  // console.log(adPublicidad);
 
   function fetchNewsByCategory(categoryId) {
     setIsLoading(true);
@@ -103,50 +116,7 @@ export default function HomeScreen() {
 
     const Footer = document.querySelector("[data-elementor-id='87']");
     Footer.remove();
-
-    const BloqueNoticia1 = document.querySelector("[data-id='b474d47']");
-    BloqueNoticia1.remove();
     
-    const BloqueNoticia2 = document.querySelector("[data-id='f54687a']");
-    BloqueNoticia2.remove();
-    
-    const Radio1 = document.querySelector("[data-id='45895aa']");
-    Radio1.remove();
-    
-    const EscuchaLaRadio1 = document.querySelector("[data-id='8bed472']");
-    EscuchaLaRadio1.remove();
-    
-    const PublicidadHorizontal = document.querySelector("[data-id='6ab0856']");
-    PublicidadHorizontal.remove();
-
-    const PublicidadCuadro = document.querySelector("[data-id='4b6996e']");
-    PublicidadCuadro.style.marginTop='-45%'
-    
-    
-    
-    // ------------- Ocualtar Bloque Completo
-
-    const divPadre = document.querySelector("div[data-id='cb42998']")
-    const cantidadDivsHijos = divPadre.children.length;
-
-    // Recorrer los divs hijos
-    for (const divHijo of divPadre.children) {
-      // Si el div hijo no tiene data-id "4b6996e"
-      if (divHijo.dataset.id !== "4b6996e") {
-        // Establecer la altura en 500px
-        divHijo.style.height = "500px";
-        // Establecer el fondo en verde
-        divHijo.style.backgroundColor = "green";
-        divHijo.style.display = "none";
-      }
-      else {
-        
-        divHijo.style.display = "block";
-      
-    }
-    }
-
-
 
     true; 
 
@@ -224,12 +194,15 @@ export default function HomeScreen() {
                 </TouchableOpacity>
                 <View className="mb-10 ml-10 mr-10">
                   <WebView
-                    source={{ uri: 'https://noticieroaltavoz.com' }}
+                    source={{
+                      uri: 'https://noticieroaltavoz.com/publicidad-app/anuncio-1/',
+                    }}
+                    // source={{ html: adPublicidad }}
                     injectedJavaScript={runFirst}
                     onMessage={() => {}}
                     style={{
                       flex: 1,
-                      height: 220,
+                      height: 300,
                     }}
                   />
                 </View>
