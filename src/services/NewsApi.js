@@ -109,24 +109,11 @@ export const getCategories = async () => {
   return arrayCategory;
 };
 
-export const getPublicidad = async () => {
-  const response = await fetch('https://noticieroaltavoz.com/');
-  const html = await response.text();
-  const parsed = parse(html, {
-    blockTextElements: {
-      script: false,
-      noscript: true,
-      style: true,
-      pre: true,
-    },
-  });
-
-  // Encontrar el div con data-id="422a733" y extraer su HTML
-  const divPublicidad = parsed.querySelector('div[data-id="422a733"]');
-  const publicidadav = divPublicidad ? divPublicidad.innerHTML : '';
-
-  // console.log('publicidadav---1');
-  // console.log(publicidadav);
-
-  return publicidadav;
-};
+// export const getPublicidad = async () => {
+//   // return Promise<data>
+//   console.log('entró a getPublicidad AMOR');
+//   const url = `https://noticieroaltavoz.com/wp-json/wp/v2/publicidad-app`;
+//   const response = await axios.get(url);
+//   const htmlContent = response.data[0].content.rendered;
+//   return htmlContent;
+// };
