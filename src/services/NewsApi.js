@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { parse } from 'node-html-parser';
+import { extractImagesWithTheirSource } from '../utils';
 
 const apiBaseUrlAV = 'https://noticieroaltavoz.com/wp-json/wp/v2/posts/';
 
@@ -109,11 +110,10 @@ export const getCategories = async () => {
   return arrayCategory;
 };
 
-// export const getPublicidad = async () => {
-//   // return Promise<data>
-//   console.log('entró a getPublicidad AMOR');
-//   const url = `https://noticieroaltavoz.com/wp-json/wp/v2/publicidad-app`;
-//   const response = await axios.get(url);
-//   const htmlContent = response.data[0].content.rendered;
-//   return htmlContent;
-// };
+export const getPublicidad = async () => {
+  const url = `https://noticieroaltavoz.com/wp-json/wp/v2/publicidad-app`;
+  const response = await axios.get(url);
+  const htmlContent = response.data[0].content.rendered;
+
+  return extractImagesWithTheirSource(htmlContent);
+};
