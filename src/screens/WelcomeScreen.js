@@ -26,7 +26,7 @@ export default function Welcome() {
       />
       <View className="flex-1 items-center justify-end max-w-[85%]  space-y-4 ">
         <Text
-          className="font-bold text-4xl shadow-2xl text-white text-center tracking-wider"
+          className="font-bold shadow-2xl text-white text-center tracking-wider"
           style={{
             fontSize: wp(10),
             fontFamily: 'SpaceGroteskBold',
