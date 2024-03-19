@@ -52,7 +52,7 @@ export function RenderNewsItem({
       onPress={() => handleClick(item)}
     >
       <View
-        className={`ml-2 mr-2 w-[95%] ${activeCategoryId === 77 && indexso !== 0 ? 'flex-row' : null}`}
+        className={`ml-4 mr-4 ${activeCategoryId === 77 && indexso !== 0 ? 'flex-row' : null}`}
       >
         <Image
           className={`rounded-md ${activeCategoryId === 77 && indexso !== 0 ? 'w-28 h-20' : 'w-[100%] h-64'}`}
@@ -77,27 +77,21 @@ export function RenderNewsItem({
             {item.title.rendered}
           </Text>
 
-          <View
-            // className={`${indexcito === 0 ? 'w-70 ml-4' : 'w-40 ml-2'}`}
-            className="w-70 ml-0"
+          <Text
+            className="font-bold text-gray-900 dark:text-neutral-300"
+            style={{
+              fontFamily: 'Poppins_500Medium',
+              fontSize: hp(2),
+            }}
           >
-            <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
-              <Text
-                className="text-gray-400 dark:text-neutral-300"
-                style={{
-                  fontFamily: 'Poppins_500Medium',
-                }}
-              >
-                Por
-              </Text>
-              <Text> </Text>
-              {item.yoast_head_json.author}
-              <Text className="text-gray-400 dark:text-neutral-300">
-                <Text>{' • '}</Text>
-                {formatDate(item.date)}
-              </Text>
+            <Text className="text-gray-400 dark:text-neutral-300">Por</Text>
+            <Text> </Text>
+            {item.yoast_head_json.author}
+            <Text className="text-gray-400 dark:text-neutral-300">
+              <Text>{' • '}</Text>
+              {formatDate(item.date)}
             </Text>
-          </View>
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

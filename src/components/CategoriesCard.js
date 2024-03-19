@@ -75,7 +75,10 @@ export default function CategoriesCard({
                 }}
                 className="flex items-center space-y-1"
               >
-                <View className={`rounded-full py-2 px-4 ${activeButtonClass}`}>
+                <View
+                  className={`py-2 px-4 ${activeButtonClass}`}
+                  style={{ borderRadius: 50 }}
+                >
                   <Text
                     className={`capitalize ${activeTextClass}`}
                     style={{
