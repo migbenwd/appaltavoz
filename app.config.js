@@ -1,7 +1,7 @@
 export default {
-  name: 'newsapp',
-  slug: 'newsapp',
-  version: '1.0.0',
+  name: 'appaltavoz',
+  slug: 'appaltavoz',
+  version: '1.1.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'light',
@@ -13,7 +13,7 @@ export default {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.migben.newsapp',
+    bundleIdentifier: 'com.migben.appaltavoz',
   },
   android: {
     adaptiveIcon: {
