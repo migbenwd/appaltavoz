@@ -190,7 +190,7 @@ export default function HomeScreen() {
                         fontFamily: 'Poppins_400Regular',
                       }}
                     >
-                      Ver Más
+                      Ver Más 1
                     </Text>
                   </View>
                 </TouchableOpacity>
