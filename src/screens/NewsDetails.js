@@ -5,7 +5,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Dimensions,
-  StyleSheet,
+  // StyleSheet,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import React, { useState } from 'react';
@@ -21,49 +21,66 @@ export default function NewsDetails() {
   const [visible, setVisible] = useState(false);
   const navigation = useNavigation();
   const runFirst = `(function(){
-    const ArbolNavegacion = document.getElementById("breadcrumbs");
-    const menuFechaRedes = document.querySelector("[data-id='51412c3']");
-    const menuResponsive = document.querySelector("[data-id='1aaf026']");
-    const DivAnteriorSiguiente = document.querySelector("[data-id='0e00ed8']");
-    const DivQueOpinas = document.querySelector("[data-id='3ed0f87']");
-    const DivComentario = document.querySelector("[data-id='b09ba3d']");
-    const DivNoticiasRelacionadas = document.querySelector("[data-id='d319abd']");
-    const DivNoticiasRelacionadas2 = document.querySelector("[data-id='23d0ea9']");
-    const DivPublicidadLoUltimo = document.querySelector("[data-id='bb28b33']");
+
+    const Header = document.querySelector("[data-elementor-id='36']");
+    Header.remove();
+    
+    const ArbolNavegacion = document.querySelector("[data-id='6a5c232']");
+    ArbolNavegacion.remove();
+
     const Footer = document.querySelector("[data-elementor-id='87']");
+    Footer.remove();
+
+    const LateralDerecho = document.querySelector("[data-id='bb28b33']");
+    LateralDerecho.remove();
+    
+    const NoticiasRelacionadas = document.querySelector("[data-id='23d0ea9']");
+    NoticiasRelacionadas.remove();
+
+    const TituloNoticiasRelacionadas = document.querySelector("[data-id='d319abd']");
+    TituloNoticiasRelacionadas.remove();
+
+    const DivAnteriorSiguiente = document.querySelector("[data-id='0e00ed8']");
+    DivAnteriorSiguiente.remove();
+
+    const DivComentarios = document.querySelector("[data-id='b09ba3d']");
+    DivComentarios.remove();
+
+    const DivQueOpinas = document.querySelector("[data-id='3ed0f87']");
+    DivQueOpinas.remove();
+
     const BtnWhatsapp = document.getElementsByClassName("joinchat__button")[0];
+    BtnWhatsapp.remove();
+
+    const IconosRedesSociales = document.querySelector("[data-id='69312eb']");
+    IconosRedesSociales.remove();
+
+    const HazPrimerComentario = document.querySelector('.elementor-post-info li:nth-child(3)');
+    HazPrimerComentario.remove();
+
+    const AutorFecha = document.querySelector("[data-id='63ff403']");
+    
     const TituloNoticia = document.querySelector("[data-id='a86e2df']");
-    const Comentario1 = document.querySelector('.elementor-post-info li:nth-child(3)');
-    const FechaCompleta = document.querySelector('.elementor-post-info li:nth-child(1)');
-    const AutorFecha = document.querySelector(".elementor-inline-items.elementor-icon-list-items.elementor-post-info");
+    TituloNoticia.style.width = "100%";
+
+    const TextoNoticia = document.querySelector("[data-id='4a7d0f5']");
+    TextoNoticia.style.marginTop = "5%";
+
     const FotoNoticia = document.querySelector("[data-id='27eacb1']");
     
-    ArbolNavegacion.remove();
-    menuFechaRedes.remove();
-    menuResponsive.remove();
-    DivAnteriorSiguiente.remove();
-    DivQueOpinas.remove();
-    DivComentario.remove();
-    DivNoticiasRelacionadas.remove();
-    DivNoticiasRelacionadas2.remove();
-    DivPublicidadLoUltimo.remove();
-    Footer.remove();
-    BtnWhatsapp.remove();
-    Comentario1.remove();
-    
-    TituloNoticia.style.marginTop = "-12%";
-    AutorFecha.style.marginBottom = "1%";
-    AutorFecha.style.listStyle = "none";
-    AutorFecha.style.fontSyze = "9px";
-    //AutorFecha.style.backgroundColor = "red";
-    AutorFecha.style.marginLeft = "6%";
-    AutorFecha.style.width = "95%";
-    
-    //FechaCompleta.style.marginLeft = "5%";
-    
     const contenedor = document.querySelector("[data-id='5694eb7']");
+    contenedor.style.width = "100%";
+
     contenedor.insertBefore(TituloNoticia, FotoNoticia);
     contenedor.insertBefore(AutorFecha, FotoNoticia);
+
+
+
+
+
+
+    
+
     true; 
   })()
 `;
@@ -72,17 +89,14 @@ export default function NewsDetails() {
     <SafeAreaView style={{ flex: 1 }}>
       <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
 
-      <View style={styles.container}>
-        <View>
-          <Image
-            source={require('../../assets/images/welcome/logo.png')}
-            style={{
-              resizeMode: 'contain',
-              height: 100,
-              width: 200,
-            }}
-          />
-        </View>
+      <View className="items-center bg-white">
+        <Image
+          source={require('../../assets/images/welcome/logo.png')}
+          style={{
+            resizeMode: 'contain',
+            width: '60%',
+          }}
+        />
       </View>
 
       <View className="flex-row items-center px-2 pb-0">
@@ -129,14 +143,14 @@ export default function NewsDetails() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: '10%',
-    textAlign: 'center',
-    backgroundColor: 'white',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'space-around',
+//     alignItems: 'center',
+//     height: '10%',
+//     textAlign: 'center',
+//     backgroundColor: 'white',
+//   },
+// });

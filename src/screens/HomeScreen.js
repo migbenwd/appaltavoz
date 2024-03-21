@@ -130,17 +130,14 @@ export default function HomeScreen() {
       <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
 
-      <View style={styles.container}>
-        <View>
-          <Image
-            source={require('../../assets/images/welcome/logo.png')}
-            style={{
-              resizeMode: 'contain',
-              height: 100,
-              width: 200,
-            }}
-          />
-        </View>
+      <View className="items-center mb-2  bg-white">
+        <Image
+          source={require('../../assets/images/welcome/logo.png')}
+          style={{
+            resizeMode: 'contain',
+            width: '60%',
+          }}
+        />
       </View>
 
       <View className="p-2">
@@ -183,14 +180,17 @@ export default function HomeScreen() {
                   }
                   className="flex items-center space-y-1"
                 >
-                  <View className="rounded-full mb-6 py-2 px-4 border-2 bg-slate-50  w-50">
+                  <View
+                    className="mb-6 py-2 px-4 border-2 bg-slate-50  w-50"
+                    style={{ borderRadius: 50 }}
+                  >
                     <Text
                       style={{
                         fontSize: hp(2),
                         fontFamily: 'Poppins_400Regular',
                       }}
                     >
-                      Ver Más 1
+                      Ver Más
                     </Text>
                   </View>
                 </TouchableOpacity>
