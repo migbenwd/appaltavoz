@@ -1,21 +1,25 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { useColorScheme } from "nativewind";
+/* eslint-disable eqeqeq */
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/no-unstable-nested-components */
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { useColorScheme } from 'nativewind';
 
-import HomeScreen from "../screens/HomeScreen";
-import NewsDetails from "../screens/NewsDetails";
-import WelcomeScreen from "../screens/WelcomeScreen";
-import SplashScreens from "../screens/SplashScreens";
+import HomeScreen from '../screens/HomeScreen';
+import NewsDetails from '../screens/NewsDetails';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import SplashScreens from '../screens/SplashScreens';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigation() {
   const { colorScheme } = useColorScheme();
-  const TabNavigator = () => {
+  function TabNavigator() {
     return (
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -23,14 +27,14 @@ export default function AppNavigation() {
           tabBarIcon: ({ focused }) => {
             let iconName;
 
-            if (route.name === "Home") {
-              iconName = "home";
-            } else if (route.name === "Discover") {
-              iconName = "compass-outline";
-            } else if (route.name === "Saved") {
-              iconName = "bookmark-outline";
-            } else if (route.name === "Search") {
-              iconName = "search-outline";
+            if (route.name === 'Inicio') {
+              iconName = 'home';
+            } else if (route.name === 'Discover') {
+              iconName = 'compass-outline';
+            } else if (route.name === 'Saved') {
+              iconName = 'bookmark-outline';
+            } else if (route.name === 'Search') {
+              iconName = 'search-outline';
             }
 
             const customizeSize = 25;
@@ -39,26 +43,26 @@ export default function AppNavigation() {
               <Ionicons
                 name={iconName}
                 size={customizeSize}
-                color={focused ? "blue" : "gray"}
+                color={focused ? 'blue' : 'gray'}
               />
             );
           },
 
-          tabBarActiveTintColor: "blue",
-          tabBarInactiveTintColor: "gray",
+          tabBarActiveTintColor: 'blue',
+          tabBarInactiveTintColor: 'gray',
           tabBarLabelStyle: {
             fontSize: 12,
-            fontFamily: "SpaceGroteskMedium",
+            fontFamily: 'SpaceGroteskMedium',
           },
           tabBarStyle: {
-            backgroundColor: colorScheme == "dark" ? "black" : "white",
+            backgroundColor: colorScheme == 'dark' ? 'black' : 'white',
           },
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Inicio" component={HomeScreen} />
       </Tab.Navigator>
     );
-  };
+  }
 
   return (
     <NavigationContainer>
