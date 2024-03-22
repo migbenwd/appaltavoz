@@ -65,7 +65,7 @@ export default function NewsDetails() {
 
     const TituloNoticiaFont = document.querySelector("[class='elementor-heading-title elementor-size-default']");
     TituloNoticiaFont.style.fontSize = "24px";
-
+    TituloNoticiaFont.style.width = "99%";
     
     const TextoNoticia = document.querySelector("[data-id='4a7d0f5']");
     TextoNoticia.style.marginTop = "5%";
@@ -105,7 +105,7 @@ export default function NewsDetails() {
           </TouchableOpacity>
         </View>
         <Text
-          className="pl-4 bg-[#0303B2]"
+          className="pl-4 text-[#0303B2]"
           style={{
             fontFamily: 'SpaceGroteskBold',
             fontSize: 20,
