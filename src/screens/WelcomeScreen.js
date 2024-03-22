@@ -24,20 +24,21 @@ export default function Welcome() {
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
       />
-      <View className="flex-1 items-center justify-end max-w-[85%]  space-y-4 ">
+      {/* <View className="flex-1 items-center justify-end max-w-[85%]  space-y-4 "> */}
+      <View className="items-center max-w-[50%] mt-96">
         <Text
-          className="font-bold shadow-2xl text-white text-center tracking-wider"
+          className="font-bold shadow-2xl text-white text-center tracking-wider mt-18 mb-16"
           style={{
-            fontSize: wp(10),
+            fontSize: wp(6),
             fontFamily: 'SpaceGroteskBold',
           }}
         >
-          Somos Tu App De Noticias En Sinaloa
+          Entérate de lo último de Sinaloa y el mundo
         </Text>
       </View>
 
       <TouchableOpacity
-        className="bg-[#3953f5] rounded-full p-4 justify-center items-center w-[90%] mt-8"
+        className="bg-[#3953f5] rounded-full p-4 justify-center items-center w-[50%]"
         onPress={() => navigation.navigate('HomeTabs')}
       >
         <Text className="text-base text-white">Ver Noticias</Text>
