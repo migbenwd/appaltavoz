@@ -63,6 +63,10 @@ export default function NewsDetails() {
     const TituloNoticia = document.querySelector("[data-id='a86e2df']");
     TituloNoticia.style.width = "100%";
 
+    const TituloNoticiaFont = document.querySelector("[class='elementor-heading-title elementor-size-default']");
+    TituloNoticiaFont.style.fontSize = "24px";
+
+    
     const TextoNoticia = document.querySelector("[data-id='4a7d0f5']");
     TextoNoticia.style.marginTop = "5%";
 
@@ -73,11 +77,6 @@ export default function NewsDetails() {
 
     contenedor.insertBefore(TituloNoticia, FotoNoticia);
     contenedor.insertBefore(AutorFecha, FotoNoticia);
-
-
-
-
-
 
     
 
@@ -99,8 +98,8 @@ export default function NewsDetails() {
         />
       </View>
 
-      <View className="flex-row items-center px-2 pb-0">
-        <View className="p-2 rounded-full items-center justify-center mt-1">
+      <View className="px-2 pb-0 bg-white">
+        <View className="rounded-full ml-2">
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Icon name="arrow-left" size={25} strokeWidth={3} color="blue" />
           </TouchableOpacity>
