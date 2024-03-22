@@ -6,6 +6,7 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import {
   useFonts,
+  Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
 } from '@expo-google-fonts/poppins';
@@ -29,6 +30,7 @@ export function RenderNewsItem({
 }) {
   const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
     Poppins_500Medium,
     Poppins_600SemiBold,
   });
@@ -47,7 +49,7 @@ export function RenderNewsItem({
   return (
     <TouchableOpacity
       // className="mb-4 items-center"
-      className="mb-4"
+      className="mb-4 mt-2"
       key={item.id}
       onPress={() => handleClick(item)}
     >
@@ -55,7 +57,7 @@ export function RenderNewsItem({
         className={`ml-4 mr-4 ${activeCategoryId === 77 && indexso !== 0 ? 'flex-row' : null}`}
       >
         <Image
-          className={`rounded-md ${activeCategoryId === 77 && indexso !== 0 ? 'w-28 h-20' : 'w-[100%] h-64'}`}
+          className={`mb-4 rounded-md ${activeCategoryId === 77 && indexso !== 0 ? 'w-28 h-20' : 'w-[100%] h-64'}`}
           source={{
             uri:
               item && item.yoast_head_json && item.yoast_head_json.og_image[0]
@@ -72,6 +74,8 @@ export function RenderNewsItem({
               fontSize:
                 activeCategoryId === 77 && indexso !== 0 ? hp(1.65) : hp(2.5),
               fontFamily: 'Poppins_600SemiBold',
+              textAlign: 'left',
+              lineHeight: 20,
             }}
           >
             {item.title.rendered}
@@ -84,10 +88,16 @@ export function RenderNewsItem({
               fontSize: hp(2),
             }}
           >
-            <Text className="text-gray-400 dark:text-neutral-300">Por</Text>
+            <Text className="text-gray-500">Por</Text>
             <Text> </Text>
             {item.yoast_head_json.author}
-            <Text className="text-gray-400 dark:text-neutral-300">
+            <Text
+              className="text-gray-500"
+              style={{
+                fontFamily: 'Poppins_400Regular',
+                fontSize: hp(1.85),
+              }}
+            >
               <Text>{' • '}</Text>
               {formatDate(item.date)}
             </Text>

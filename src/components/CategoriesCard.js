@@ -76,7 +76,7 @@ export default function CategoriesCard({
                 className="flex items-center space-y-1"
               >
                 <View
-                  className={`py-2 px-4 ${activeButtonClass}`}
+                  className={`py-1 px-4 ${activeButtonClass}`}
                   style={{ borderRadius: 50 }}
                 >
                   <Text

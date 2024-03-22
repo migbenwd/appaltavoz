@@ -13,9 +13,20 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
+
 const { height, width } = Dimensions.get('window');
 
 export default function NewsDetails() {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_700Bold,
+  });
+
   const { item, tituloCategoria } = useRoute().params;
 
   const [visible, setVisible] = useState(false);
@@ -84,6 +95,9 @@ export default function NewsDetails() {
   })()
 `;
 
+  if (!fontsLoaded) {
+    return <Text />;
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View className="flex-row justify-between items-center px-2 pb-12 bg-[#0303B2] " />
@@ -101,13 +115,15 @@ export default function NewsDetails() {
       <View className="px-2 pb-0 bg-white">
         <View className="rounded-full ml-2">
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon name="arrow-left" size={25} strokeWidth={3} color="blue" />
+            <Icon name="arrow-left" size={30} strokeWidth={3} color="blue" />
           </TouchableOpacity>
         </View>
         <Text
-          className="pl-4 text-[#0303B2]"
+          className="mt-4 pl-4 text-[#0303B2]"
           style={{
-            fontFamily: 'SpaceGroteskBold',
+            // fontFamily: 'SpaceGroteskBold',
+            fontFamily: 'Poppins_400Regular',
+
             fontSize: 20,
           }}
         >
