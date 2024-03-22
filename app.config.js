@@ -1,5 +1,5 @@
 export default {
-  name: 'appaltavoz',
+  name: 'Noticiero Altavoz',
   slug: 'appaltavoz',
   version: '1.1.0',
   orientation: 'portrait',
