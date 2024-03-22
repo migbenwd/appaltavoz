@@ -34,7 +34,7 @@ export default function SplashScreens() {
   return (
     <View
       onLayout={onLayoutRootView}
-      className="flex-1 bg-blue-800 justify-center items-center"
+      className="flex-1 bg-[#0303B2] justify-center items-center"
     >
       <Text className="text-white text-3xl font-extrabold uppercase">
         Noticiero Altavoz

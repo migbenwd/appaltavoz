@@ -38,7 +38,7 @@ export default function Welcome() {
       </View>
 
       <TouchableOpacity
-        className="bg-[#3953f5] rounded-full p-4 justify-center items-center w-[50%]"
+        className="bg-[#0303B2] rounded-full p-4 justify-center items-center w-[50%]"
         onPress={() => navigation.navigate('HomeTabs')}
       >
         <Text className="text-base text-white">Ver Noticias</Text>

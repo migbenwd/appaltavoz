@@ -128,7 +128,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1 }} edge={['bottom']}>
-      <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
+      <View className="flex-row justify-between items-center px-2 pb-12 bg-[#0303B2]" />
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
 
       <View className="items-center mb-2  bg-white">

@@ -86,7 +86,7 @@ export default function NewsDetails() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View className="flex-row justify-between items-center px-2 pb-12 bg-blue-700" />
+      <View className="flex-row justify-between items-center px-2 pb-12 bg-[#0303B2] " />
 
       <View className="items-center bg-white">
         <Image
@@ -105,7 +105,7 @@ export default function NewsDetails() {
           </TouchableOpacity>
         </View>
         <Text
-          className="pl-4 text-blue-800"
+          className="pl-4 bg-[#0303B2]"
           style={{
             fontFamily: 'SpaceGroteskBold',
             fontSize: 20,

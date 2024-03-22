@@ -53,7 +53,7 @@ export default function CategoriesCard({
         {categories.map((category, index) => {
           const isActive = category.id === activeCategory;
           const activeButtonClass = isActive
-            ? 'bg-blue-700 '
+            ? 'bg-[#0303B2]'
             : 'border-2 bg-slate-50';
           const activeTextClass = isActive
             ? 'text-white'
