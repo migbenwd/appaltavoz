@@ -79,7 +79,7 @@ export default function NewsDetails() {
     TituloNoticiaFont.style.width = "99%";
     
     const TextoNoticia = document.querySelector("[data-id='4a7d0f5']");
-    TextoNoticia.style.marginTop = "5%";
+    TextoNoticia.style.marginTop = "3%";
 
     const FotoNoticia = document.querySelector("[data-id='27eacb1']");
     
@@ -89,7 +89,10 @@ export default function NewsDetails() {
     contenedor.insertBefore(TituloNoticia, FotoNoticia);
     contenedor.insertBefore(AutorFecha, FotoNoticia);
 
-    
+    const AutoriaFechaCuadro = document.querySelector(".elementor-inline-items.elementor-icon-list-items.elementor-post-info");
+    AutoriaFechaCuadro.style.listStyle = "none";
+
+
 
     true; 
   })()

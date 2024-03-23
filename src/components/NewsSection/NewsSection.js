@@ -57,7 +57,7 @@ export function RenderNewsItem({
         className={`ml-4 mr-4 ${activeCategoryId === 77 && indexso !== 0 ? 'flex-row' : null}`}
       >
         <Image
-          className={`mb-4 rounded-md ${activeCategoryId === 77 && indexso !== 0 ? 'w-28 h-20' : 'w-[100%] h-64'}`}
+          className={`mb-2 rounded-md ${activeCategoryId === 77 && indexso !== 0 ? 'w-28 h-20' : 'w-[100%] h-64'}`}
           source={{
             uri:
               item && item.yoast_head_json && item.yoast_head_json.og_image[0]
@@ -70,12 +70,13 @@ export function RenderNewsItem({
           className={`${activeCategoryId === 77 && indexso !== 0 ? 'w-[60%] ml-2' : null}`}
         >
           <Text
+            className="leading-[2rem]"
             style={{
               fontSize:
                 activeCategoryId === 77 && indexso !== 0 ? hp(1.65) : hp(2.5),
               fontFamily: 'Poppins_600SemiBold',
               textAlign: 'left',
-              lineHeight: 20,
+              // lineHeight: 18,
             }}
           >
             {item.title.rendered}
