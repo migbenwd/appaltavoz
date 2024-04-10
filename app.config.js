@@ -1,6 +1,6 @@
 export default {
   name: 'Noticiero Altavoz',
-  slug: 'appaltavoz',
+  slug: 'noticieroaltavoz',
   version: '1.1.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -13,14 +13,14 @@ export default {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.migben.appaltavoz',
+    bundleIdentifier: 'com.noticierolatavoz.appnoticieroaltavoz',
   },
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    package: 'com.migben.newsapp',
+    package: 'com.noticierolatavoz.appnoticieroaltavoz',
   },
   web: {
     favicon: './assets/favicon.png',
@@ -31,17 +31,4 @@ export default {
       projectId: '0b48ef1f-11de-4b09-a0ea-95afe2165886',
     },
   },
-  /*
-	extra: {
-        eas: {
-            projectId: "ea85bda6-b26d-486a-90f0-5b8abbc6cf22"
-        }
-    },
-    runtimeVersion: {
-        policy: "appVersion"
-    },
-    updates: {
-        url: "https://u.expo.dev/ea85bda6-b26d-486a-90f0-5b8abbc6cf22"
-    }
-	*/
 };
