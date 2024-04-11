@@ -1,6 +1,6 @@
 export default {
   name: 'Noticiero Altavoz',
-  slug: 'noticieroaltavozapp',
+  slug: 'noticieroaltavoz',
   version: '1.1.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -13,14 +13,14 @@ export default {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.noticierolatavoz.noticieroaltavozapp',
+    bundleIdentifier: 'com.noticieroaltavoz.noticieroaltavozapp',
   },
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    package: 'com.noticierolatavoz.noticieroaltavozapp',
+    package: 'com.noticieroaltavoz.noticieroaltavozapp',
   },
   web: {
     favicon: './assets/favicon.png',
