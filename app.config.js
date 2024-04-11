@@ -1,6 +1,6 @@
 export default {
   name: 'Noticiero Altavoz',
-  slug: 'noticieroaltavoz',
+  slug: 'noticieroaltavozapp',
   version: '1.1.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
