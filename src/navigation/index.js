@@ -13,6 +13,7 @@ import HomeScreen from '../screens/HomeScreen';
 import NewsDetails from '../screens/NewsDetails';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import SplashScreens from '../screens/SplashScreens';
+import RadioScreen from '../screens/RadioScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -29,8 +30,8 @@ export default function AppNavigation() {
 
             if (route.name === 'Inicio') {
               iconName = 'home';
-            } else if (route.name === 'Discover') {
-              iconName = 'compass-outline';
+            } else if (route.name === 'Radio') {
+              iconName = 'radio';
             } else if (route.name === 'Saved') {
               iconName = 'bookmark-outline';
             } else if (route.name === 'Search') {
@@ -60,6 +61,7 @@ export default function AppNavigation() {
         })}
       >
         <Tab.Screen name="Inicio" component={HomeScreen} />
+        <Tab.Screen name="Radio" component={RadioScreen} />
       </Tab.Navigator>
     );
   }
