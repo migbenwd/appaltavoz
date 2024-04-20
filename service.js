@@ -1,4 +1,5 @@
 /* eslint-disable import/no-import-module-exports */
+/* eslint-disable func-names */
 import TrackPlayer from 'react-native-track-player';
 
 module.exports = async function () {
