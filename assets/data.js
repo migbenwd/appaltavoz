@@ -1,6 +1,6 @@
 const podcasts = [
   {
-    title: 'RADIO 65',
+    title: 'LA RADIO 65',
     artist: 'Altavoz Radio',
     artwork:
       'https://noticieroaltavoz.com/wp-content/uploads/2024/01/RADIO-65-BLANCO.png',

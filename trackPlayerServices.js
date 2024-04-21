@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-finally */
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
   Capability,
