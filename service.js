@@ -1,4 +1,5 @@
-import TrackPlayer from "react-native-track-player";
+// eslint-disable-next-line import/no-import-module-exports
+import TrackPlayer from 'react-native-track-player';
 
 module.exports = async function () {
   console.log('migben - Init Service Function');
