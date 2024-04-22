@@ -1,8 +1,7 @@
-/* eslint-disable import/no-import-module-exports */
-/* eslint-disable func-names */
-import TrackPlayer from 'react-native-track-player';
+import TrackPlayer from "react-native-track-player";
 
 module.exports = async function () {
+  console.log('Service Function');
   TrackPlayer.addEventListener('remote-play', () => TrackPlayer.play());
   TrackPlayer.addEventListener('remote-pause', () => TrackPlayer.pause());
   TrackPlayer.addEventListener('remote-next', () => TrackPlayer.skipToNext());

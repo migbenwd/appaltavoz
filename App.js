@@ -35,7 +35,14 @@ import TrackPlayer, {
   State,
 } from 'react-native-track-player';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { registerRootComponent } from 'expo';
 import { setupPlayer, addTracks } from './trackPlayerServices';
+
+console.log('Iniciando App.js');
+
+registerRootComponent(App);
+TrackPlayer.registerPlaybackService(() => require('./service'));
+console.log('saliendo de index.js');
 
 function NombreEmisora() {
   const [info, setInfo] = useState({});

@@ -16,7 +16,8 @@ import TrackPlayer, {
   useProgress,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
-import Slider from '@react-native-community/slider';
+
+import Slider from '@react-native-community/slider'; 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import podcasts from './assets/data';
 
