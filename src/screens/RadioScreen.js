@@ -36,7 +36,7 @@ import {
 import { name as appName } from '../../app.json';
 
 AppRegistry.registerComponent(appName, () => App);
-// TrackPlayer.registerPlaybackService(() => playbackService);
+TrackPlayer.registerPlaybackService(() => playbackService);
 
 function NombreEmisora() {
   const [info, setInfo] = useState({});
