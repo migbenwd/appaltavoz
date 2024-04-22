@@ -1,11 +1,9 @@
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/jsx-no-bind */
 /* eslint-disable global-require */
 
 import React, { useEffect, useState } from 'react';
 import {
-  // SafeAreaView,
-  // ScrollView,
+  SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -13,30 +11,16 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Image,
-  AppRegistry,
 } from 'react-native';
 import TrackPlayer, {
   useTrackPlayerEvents,
   usePlaybackState,
-  // useProgress,
+  useProgress,
   Event,
   State,
 } from 'react-native-track-player';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { StatusBar } from 'expo-status-bar';
-// import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useColorScheme } from 'nativewind';
-import {
-  setupPlayer,
-  addTracks,
-  playbackService,
-} from '../../trackPlayerServices';
-
-import { name as appName } from '../../app.json';
-
-AppRegistry.registerComponent(appName, () => App);
-// TrackPlayer.registerPlaybackService(() => playbackService);
+import { setupPlayer, addTracks } from '../../trackPlayerServices';
 
 function NombreEmisora() {
   const [info, setInfo] = useState({});
@@ -63,6 +47,18 @@ function NombreEmisora() {
   );
 }
 
+function TrackProgress() {
+  const { position, duration } = useProgress(200);
+
+  function format(seconds) {
+    const mins = parseInt(seconds / 60)
+      .toString()
+      .padStart(2, '0');
+    const secs = (Math.trunc(seconds) % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
+  }
+}
+
 function Playlist() {
   const [queue, setQueue] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(0);
@@ -82,7 +78,7 @@ function Playlist() {
     }
   });
 
-  function PlaylistItem({ index, isCurrent, logoemisora }) {
+  function PlaylistItem({ index, title, isCurrent, logoemisora }) {
     function handleItemPress() {
       TrackPlayer.skip(index);
     }
@@ -125,7 +121,6 @@ function Playlist() {
   }
 
   return (
-    // <View style={{ backgroundColor: 'yellow' }}>
     <View>
       <View style={styles.playlist}>
         <FlatList
@@ -179,21 +174,18 @@ function Controls({ onShuffle }) {
         name="arrow-left"
         size={28}
         backgroundColor="transparent"
-        color="blue"
         onPress={() => TrackPlayer.skipToPrevious()}
       />
       <Icon.Button
         name={playerState == State.Playing ? 'pause' : 'play'}
         size={28}
         backgroundColor="transparent"
-        color="blue"
         onPress={handlePlayPress}
       />
       <Icon.Button
         name="arrow-right"
         size={28}
         backgroundColor="transparent"
-        color="blue"
         onPress={() => TrackPlayer.skipToNext()}
       />
 
@@ -206,9 +198,8 @@ function Controls({ onShuffle }) {
   );
 }
 
-export default function Radio() {
+function Radio() {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
-  const { colorScheme } = useColorScheme();
 
   useEffect(() => {
     async function setup() {
@@ -226,30 +217,16 @@ export default function Radio() {
   }, []);
 
   if (!isPlayerReady) {
-    // return (
-    //   <SafeAreaView style={styles.container}>
-    //     <ActivityIndicator size="large" color="#bbb" />
-    //   </SafeAreaView>
-    // );
+    return (
+      <SafeAreaView style={styles.container}>
+        <ActivityIndicator size="large" color="#bbb" />
+      </SafeAreaView>
+    );
   }
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, backgroundColor: 'white' }}
-      edge={['bottom']}
-    >
-      <View className="flex-row justify-between items-center px-2 pb-12 bg-[#0303B2]" />
-      {/* <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} /> */}
-
-      <View className="items-center mb-2  bg-white">
-        <Image
-          source={require('../../assets/images/welcome/logo.png')}
-          style={{
-            resizeMode: 'contain',
-            width: '60%',
-          }}
-        />
-      </View>
+    <SafeAreaView style={styles.container}>
+      <TrackProgress />
       <Playlist />
     </SafeAreaView>
   );
@@ -259,18 +236,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    // backgroundColor: 'blue',
+    backgroundColor: 'blue',
   },
   songTitle: {
     fontSize: 20,
-    marginBottom: 0,
-    color: 'blue',
+    marginBottom: 20,
+    color: 'white',
     textAlign: 'center',
   },
-
+  artistName: {
+    fontSize: 24,
+    color: '#888',
+  },
   playlist: {
-    marginTop: 0,
-    marginBottom: 0,
-    // backgroundColor: 'white',
+    marginTop: 40,
+    marginBottom: 40,
+  },
+  trackProgress: {
+    marginTop: 40,
+    textAlign: 'center',
+    fontSize: 24,
+    color: '#eee',
   },
 });
+
+export default Radio;
