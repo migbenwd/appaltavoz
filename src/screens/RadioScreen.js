@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
+  // SafeAreaView,
+  // ScrollView,
   StyleSheet,
   Text,
   View,
@@ -15,11 +15,20 @@ import {
 import TrackPlayer, {
   useTrackPlayerEvents,
   usePlaybackState,
-  useProgress,
+  // useProgress,
   Event,
   State,
 } from 'react-native-track-player';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useColorScheme } from 'nativewind';
+import { StatusBar } from 'expo-status-bar';
+
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
 import { setupPlayer, addTracks } from '../../trackPlayerServices';
 
 function NombreEmisora() {
@@ -47,18 +56,6 @@ function NombreEmisora() {
   );
 }
 
-function TrackProgress() {
-  const { position, duration } = useProgress(200);
-
-  function format(seconds) {
-    const mins = parseInt(seconds / 60)
-      .toString()
-      .padStart(2, '0');
-    const secs = (Math.trunc(seconds) % 60).toString().padStart(2, '0');
-    return `${mins}:${secs}`;
-  }
-}
-
 function Playlist() {
   const [queue, setQueue] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(0);
@@ -78,11 +75,10 @@ function Playlist() {
     }
   });
 
-  function PlaylistItem({ index, title, isCurrent, logoemisora }) {
+  function PlaylistItem({ index, isCurrent, logoemisora }) {
     function handleItemPress() {
       TrackPlayer.skip(index);
     }
-
     return (
       <TouchableOpacity onPress={handleItemPress}>
         <Image
@@ -167,38 +163,40 @@ function Controls({ onShuffle }) {
   }
 
   return (
-    <View
-      style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}
-    >
+    <View style={{ flexDirection: 'row' }}>
       <Icon.Button
+        color="blue"
         name="arrow-left"
         size={28}
         backgroundColor="transparent"
         onPress={() => TrackPlayer.skipToPrevious()}
       />
       <Icon.Button
+        color="blue"
         name={playerState == State.Playing ? 'pause' : 'play'}
         size={28}
         backgroundColor="transparent"
         onPress={handlePlayPress}
       />
       <Icon.Button
+        color="blue"
         name="arrow-right"
         size={28}
         backgroundColor="transparent"
         onPress={() => TrackPlayer.skipToNext()}
       />
-
-      {/* <Icon.Button
-          name="random"
-          size={28}
-          backgroundColor="transparent"
-          onPress={onShuffle}/> */}
     </View>
   );
 }
 
-function Radio() {
+export default function Radio() {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_700Bold,
+  });
+
+  const { colorScheme } = useColorScheme();
+
   const [isPlayerReady, setIsPlayerReady] = useState(false);
 
   useEffect(() => {
@@ -225,8 +223,19 @@ function Radio() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <TrackProgress />
+    <SafeAreaView style={{ flex: 1 }} edge={['bottom']}>
+      <View className="flex-row justify-between items-center px-2 pb-12 bg-[#0303B2]" />
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+
+      <View className="items-center mb-2  bg-white">
+        <Image
+          source={require('../../assets/images/welcome/logo.png')}
+          style={{
+            resizeMode: 'contain',
+            width: '60%',
+          }}
+        />
+      </View>
       <Playlist />
     </SafeAreaView>
   );
@@ -240,24 +249,13 @@ const styles = StyleSheet.create({
   },
   songTitle: {
     fontSize: 20,
-    marginBottom: 20,
-    color: 'white',
+    marginBottom: 0,
+    color: 'blue',
     textAlign: 'center',
   },
-  artistName: {
-    fontSize: 24,
-    color: '#888',
-  },
+
   playlist: {
-    marginTop: 40,
-    marginBottom: 40,
-  },
-  trackProgress: {
-    marginTop: 40,
-    textAlign: 'center',
-    fontSize: 24,
-    color: '#eee',
+    marginTop: 0,
+    marginBottom: 0,
   },
 });
-
-export default Radio;
